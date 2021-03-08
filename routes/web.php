@@ -34,15 +34,15 @@ Route::middleware(['auth'])->group(function () {
 
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],function(){
         // namespace itu untuk controller, lalu prefix itu urlnya
-        // jadi resource nilai ini sama dengan
+        // jadi resource nilai nih misal, sama dengan
         // Route::resource('admin/nilai', 'Admin\NilaiController');
 
-        Route::resource('nilai', 'NilaiController');
-
+        
         
         // route di bawah ini hanya boleh di akses oleh guru
         // settingnya ada di app/Http/Middleware/IsGuru
         Route::middleware(['is_guru'])->group(function () {
+            Route::resource('nilai', 'NilaiController');
             Route::resource('guru', 'GuruController');
             Route::resource('kelas', 'KelasController')->parameters(['kelas' => 'kelas']);
             Route::resource('mapel', 'MapelController');

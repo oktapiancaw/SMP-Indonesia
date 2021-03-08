@@ -69,7 +69,7 @@
       @else
       <!-- Nav Item - Charts -->
       <li class="nav-item active">
-        <a class="nav-link" href="{{ route('nilai.index') }}">
+        <a class="nav-link" href="{{ route('home') }}">
           <i class="fas fa-fw fa-wrench"></i>
           <span>Nilai</span></a>
       </li>

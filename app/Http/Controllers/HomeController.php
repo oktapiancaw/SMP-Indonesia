@@ -16,17 +16,21 @@ class HomeController extends Controller
 
     public function index()
     {
+        // jika dia user/siswa maka jalankan ini
         if(auth()->user()->level == 2){
-            $nilai = Nilai::where('id_siswa', auth()->user()->id)->get();
             $siswa = DB::table('siswas')
             ->where('siswas.id_user',  auth()->user()->id)
             ->leftjoin('kelas', 'kelas.id', '=', 'siswas.id_kelas')
             ->select('kelas.kelas', 'siswas.*')
             ->first();
-            dd($siswa);
+            $nilai = DB::table('nilais')
+            ->where('nilais.id_siswa', $siswa->id)
+            ->join('mapels', 'mapels.id', '=', 'nilais.id_mapel')
+            ->select('mapels.nama_mapel as mapel', 'nilais.*')
+            ->get();
             return view('siswa.index', ['nilai' => $nilai, 'siswa' => $siswa]);
-            // bikin file index.blade.php di folder resource/view/siswa/
         }
+        // jika dia guru maka ini
         return view('home');
     }
     public function Admin()
