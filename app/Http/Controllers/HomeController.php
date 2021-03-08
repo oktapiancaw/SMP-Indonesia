@@ -16,13 +16,14 @@ class HomeController extends Controller
 
     public function index()
     {
-        if(auth()->user()->id != 1){
+        if(auth()->user()->level == 2){
             $nilai = Nilai::where('id_siswa', auth()->user()->id)->get();
             $siswa = DB::table('siswas')
-            ->where('siswas.user_id',  auth()->user()->id)
+            ->where('siswas.id_user',  auth()->user()->id)
             ->leftjoin('kelas', 'kelas.id', '=', 'siswas.id_kelas')
             ->select('kelas.kelas', 'siswas.*')
             ->first();
+            dd($siswa);
             return view('siswa.index', ['nilai' => $nilai, 'siswa' => $siswa]);
             // bikin file index.blade.php di folder resource/view/siswa/
         }

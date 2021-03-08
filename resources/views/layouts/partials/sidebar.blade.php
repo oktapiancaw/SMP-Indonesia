@@ -47,22 +47,33 @@
       </div>
 
       <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Data</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Main Data</h6>
-            <a class="collapse-item" href="{{ route('guru.index') }}">Guru</a>
-            <a class="collapse-item" href="{{ route('kelas.index') }}">Kelas</a>
-            <a class="collapse-item" href="{{ route('mapel.index') }}">Mapel</a>
-            <a class="collapse-item" href="{{ route('siswa.index') }}">Siswa</a>
-            <a class="collapse-item" href="{{ route('nilai.index') }}">Nilai</a>
+
+      {{-- Menu ini ditampilkan ketika yang login itu guru --}}
+      @if (auth()->user()->level == 1)
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Data</span>
+          </a>
+          <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Main Data</h6>
+              <a class="collapse-item" href="{{ route('guru.index') }}">Guru</a>
+              <a class="collapse-item" href="{{ route('kelas.index') }}">Kelas</a>
+              <a class="collapse-item" href="{{ route('mapel.index') }}">Mapel</a>
+              <a class="collapse-item" href="{{ route('siswa.index') }}">Siswa</a>
+              <a class="collapse-item" href="{{ route('nilai.index') }}">Nilai</a>
+            </div>
           </div>
-        </div>
+        </li>
+      @else
+      <!-- Nav Item - Charts -->
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('nilai.index') }}">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Nilai</span></a>
       </li>
+      @endif
 
       {{-- <!-- Divider -->
       <hr class="sidebar-divider">

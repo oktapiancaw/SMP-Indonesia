@@ -42,14 +42,18 @@
                   @else
                       <td><span class="badge badge-success">Tidak Lulus Predikat C</span></td>
                   @endif
-                  <td class="text-center">
-                    <a href="{{ route('nilai.edit', $item->id)}}" class="btn btn-primary">Edit</a>
-                    <form action="{{ route('nilai.destroy', $item->id) }}" method="post" class="d-inline-block">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                  </td>
+
+                  {{-- Jika user yang aksesnya guru maka tampilkan --}}
+                  @if (auth()->user()->level == 1)
+                    <td class="text-center">
+                      <a href="{{ route('nilai.edit', $item->id)}}" class="btn btn-primary">Edit</a>
+                      <form action="{{ route('nilai.destroy', $item->id) }}" method="post" class="d-inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                      </form>
+                    </td>
+                  @endif
                 </tr>   
               @endforeach
             </tbody>
