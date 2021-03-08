@@ -5,14 +5,14 @@
     <div class="col-6">
       <div class="card">
         <div class="card-header">
-          <h5>Tambah Data</h5>
+          <h5>Tambah Data Kelas</h5>
         </div>
         <div class="card-body">
           <form action="{{ route('kelas.store') }}" method="post">
             @csrf
           <div class="form-group">
             <label for="kelas">Nama Kelas</label>
-            <input type="text" id="kelas" name="kelas" class="form-control">
+            <input type="text" id="kelas" name="kelas" class="form-control @error('kelas') is-invalid @enderror">
             @error('kelas')
             <div class="invalid-feedback">
                 {{ $message }}

@@ -19,9 +19,9 @@
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Mata Pelajaran</th>
-                <th scope="col">Nilai Pengetahuan</th>
-                <th scope="col">Nilai Keterampilan</th>
-                <th scope="col">Nilai Akhir</th>
+                <th class="text-center" scope="col">Nilai Pengetahuan</th>
+                <th class="text-center" scope="col">Nilai Keterampilan</th>
+                <th class="text-center" scope="col">Nilai Akhir</th>
                 <th scope="col">Predikat</th>
                 <th width="20%" class="text-center" scope="col"> Aksi</th>
               </tr>
@@ -32,9 +32,9 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->nama_siswa }}</td>
                   <td>{{ $item->mapel }}</td>
-                  <td>{{ $item->np }}</td>
-                  <td>{{ $item->nk }}</td>
-                  <td>{{ $item->nilai_akhir }}</td>
+                  <td class="text-center">{{ $item->np }}</td>
+                  <td class="text-center">{{ $item->nk }}</td>
+                  <td class="text-center">{{ $item->nilai_akhir }}</td>
                   @if ($item->nilai_akhir >= 70)
                       <td><span class="badge badge-success">Lulus Predikat A</span></td>
                   @elseif($item->nilai_akhir > 90)
@@ -42,8 +42,7 @@
                   @else
                       <td><span class="badge badge-success">Tidak Lulus Predikat C</span></td>
                   @endif
-                  <td>{{ $item->nilai_akhir }}</td>
-                  <td>
+                  <td class="text-center">
                     <a href="{{ route('nilai.edit', $item->id)}}" class="btn btn-primary">Edit</a>
                     <form action="{{ route('nilai.destroy', $item->id) }}" method="post" class="d-inline-block">
                       @csrf

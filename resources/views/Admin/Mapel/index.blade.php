@@ -28,7 +28,7 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->nama_mapel }}</td>
                   <td>{{ $item->nama_guru }}</td>
-                  <td>
+                  <td class="text-center">
                     <a href="{{ route('mapel.edit', $item->id)}}" class="btn btn-primary">Edit</a>
                     <form action="{{ route('mapel.destroy', $item->id) }}" method="post" class="d-inline-block">
                       @csrf

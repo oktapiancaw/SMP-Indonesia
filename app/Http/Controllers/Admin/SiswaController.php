@@ -46,16 +46,38 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            // ini rule atau aturannya
+            'nama' => 'required',
+            'id_kelas' => 'required',
+            'alamat' => 'required',
+        ],
+        [
+            // ini tampilannya/pesannya
+            'nama.required' => 'Dimohon untuk mengisi field nama!',
+            'id_kelas.required' => 'Dimohon untuk memilih kelas dengan benar!',
+            'alamat.required' => 'Dimohon untuk mengisi field alamat!'
+        ]);
         $attr = $request->all();
+        User::create([
+            // menghapus spasinya dlu lalu di tambahkan " - id yang bikin"
+            // lalu semuanya di ubah jadi huruf kecil
+
+            // contoh namanya "Udin Sitinja"
+            // Hasilnya "udinsitinja-01"
+            
+            'username' => strtolower(str_replace(' ', '',$attr['nama']) . '-' . auth()->user()->id),
+            'level' => 2,
+
+            // Hash::make() itu sama dengan bcrypt()
+            'password' => Hash::make('1234'),
+        ]);
+        $attr['id_user'] = DB::getPdo()->lastInsertId();
+
         $attr['created_at'] = Carbon::now();
         $attr['updated_at'] = Carbon::now();
         Siswa::create($attr);
 
-        User::create([
-            'username' => $attr['nama'],
-            'level' => 2,
-            'password' => Hash::make('1234'),
-        ]);
 
         return redirect('admin/siswa')->with(['success' => 'Siswa berhasil di tambahkan!']);
     }
@@ -92,6 +114,18 @@ class SiswaController extends Controller
      */
     public function update(Request $request, Siswa $siswa)
     {
+        $this->validate($request, [
+            // ini rule atau aturannya
+            'nama' => 'required',
+            'id_kelas' => 'required',
+            'alamat' => 'required',
+        ],
+        [
+            // ini tampilannya/pesannya
+            'nama.required' => 'Dimohon untuk mengisi field nama!',
+            'id_kelas.required' => 'Dimohon untuk memilih kelas dengan benar!',
+            'alamat.required' => 'Dimohon untuk mengisi field alamat!'
+        ]);
         $attr = $request->all();
         $attr['updated_at'] = Carbon::now();
         $siswa->update($attr);

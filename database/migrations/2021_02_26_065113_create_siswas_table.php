@@ -15,6 +15,7 @@ class CreateSiswasTable extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_user');
             $table->integer('id_kelas');
             $table->string('nama');
             $table->text('alamat');

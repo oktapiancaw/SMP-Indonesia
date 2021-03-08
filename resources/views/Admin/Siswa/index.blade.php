@@ -30,7 +30,7 @@
                   <td>{{ $item->nama }}</td>
                   <td>{{ $item->kelas ?? '' }}</td>
                   <td>{{ $item->alamat }}</td>
-                  <td>
+                  <td class="text-center">
                     <a href="{{ route('siswa.edit', $item->id)}}" class="btn btn-primary">Edit</a>
                     <form action="{{ route('siswa.destroy', $item->id) }}" method="post" class="d-inline-block">
                       @csrf

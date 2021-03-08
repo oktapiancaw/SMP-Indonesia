@@ -47,6 +47,20 @@ class NilaiController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            // ini rule atau aturannya
+            'id_siswa' => 'required',
+            'id_mapel' => 'required',
+            'np' => 'required',
+            'nk' => 'required',
+        ],
+        [
+            // ini tampilannya/pesannya
+            'id_siswa.required' => 'Dimohon untuk memilih salah satu siswa!',
+            'id_mapel.required' => 'Dimohon untuk memilih salah satu mata pelajaran!',
+            'np.required' => 'Dimohon untuk mengisi field Nilai Pengetahuan!',
+            'nk.required' => 'Dimohon untuk mengisi field Nilai Keterampilan!',
+        ]);
         $attr = $request->all();
         $attr['created_at'] = Carbon::now();
         $attr['updated_at'] = Carbon::now();
@@ -89,6 +103,20 @@ class NilaiController extends Controller
      */
     public function update(Request $request, Nilai $nilai)
     {
+        $this->validate($request, [
+            // ini rule atau aturannya
+            'id_siswa' => 'required',
+            'id_mapel' => 'required',
+            'np' => 'required',
+            'nk' => 'required',
+        ],
+        [
+            // ini tampilannya/pesannya
+            'id_siswa.required' => 'Dimohon untuk memilih salah satu siswa!',
+            'id_mapel.required' => 'Dimohon untuk memilih salah satu mata pelajaran!',
+            'np.required' => 'Dimohon untuk mengisi field Nilai Pengetahuan!',
+            'nk.required' => 'Dimohon untuk mengisi field Nilai Keterampilan!',
+        ]);
         $attr = $request->all();
         $attr['updated_at'] = Carbon::now();
         $nilai->update($attr);

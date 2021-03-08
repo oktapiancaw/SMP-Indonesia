@@ -45,6 +45,16 @@ class MapelController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            // ini rule atau aturannya
+            'nama_mapel' => 'required',
+            'id_guru' => 'required',
+        ],
+        [
+            // ini tampilannya/pesannya
+            'nama_mapel.required' => 'Dimohon untuk mengisi field nama mata pelajaran!',
+            'id_guru.required' => 'Dimohon untuk memilih salah satu guru!',
+        ]);
         $attr = $request->all();
         $attr['created_at'] = Carbon::now();
         $attr['updated_at'] = Carbon::now();
@@ -81,6 +91,16 @@ class MapelController extends Controller
      */
     public function update(Request $request, Mapel $mapel)
     {
+        $this->validate($request, [
+            // ini rule atau aturannya
+            'nama_mapel' => 'required',
+            'id_guru' => 'required',
+        ],
+        [
+            // ini tampilannya/pesannya
+            'nama_mapel.required' => 'Dimohon untuk mengisi field nama mata pelajaran!',
+            'id_guru.required' => 'Dimohon untuk memilih salah satu guru!',
+        ]);
         $attr = $request->all();
         $attr['updated_at'] = Carbon::now();
         $mapel->update($attr);

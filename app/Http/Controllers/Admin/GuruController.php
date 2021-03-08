@@ -40,6 +40,18 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
+        // ini validasi 
+        $this->validate($request, [
+            // ini rule atau aturannya
+            'nama' => 'required',
+            'alamat' => 'required',
+        ],
+        [
+            // ini tampilannya/pesannya
+            'nama.required' => 'Dimohon untuk mengisi field nama!',
+            'alamat.required' => 'Dimohon untuk mengisi field alamat!'
+        ]);
+
         $attr = $request->all();
         $attr['created_at'] = Carbon::now(); 
         $attr['updated_at'] = Carbon::now(); 
@@ -80,6 +92,16 @@ class GuruController extends Controller
      */
     public function update(Request $request, Guru $guru)
     {
+        $this->validate($request, [
+            // ini rule atau aturannya
+            'nama' => 'required',
+            'alamat' => 'required',
+        ],
+        [
+            // ini tampilannya/pesannya
+            'nama.required' => 'Dimohon untuk mengisi field nama!',
+            'alamat.required' => 'Dimohon untuk mengisi field alamat!'
+        ]);
         $attr = $request->all();
         $attr['updated_at'] = Carbon::now(); 
         $guru->update($attr);

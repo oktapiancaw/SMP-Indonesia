@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="row mt-5">
-    <div class="col-6">
+    <div class="col">
       <div class="card">
         <div class="card-header">
           <h5>Data kelas</h5>
@@ -26,7 +26,7 @@
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->kelas }}</td>
-                  <td>
+                  <td class="text-center">
                     <a href="{{ route('kelas.edit', $item->id)}}" class="btn btn-primary">Edit</a>
                     <form action="{{ route('kelas.destroy', $item->id) }}" method="post" class="d-inline-block">
                       @csrf

@@ -39,6 +39,14 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            // ini rule atau aturannya
+            'kelas' => 'required',
+        ],
+        [
+            // ini tampilannya/pesannya
+            'kelas.required' => 'Dimohon untuk mengisi field kelas!',
+        ]);
         $attr = $request->all();
         $attr['created_at'] = Carbon::now();
         $attr['updated_at'] = Carbon::now();
@@ -77,6 +85,14 @@ class KelasController extends Controller
      */
     public function update(Request $request, Kelas $kelas)
     {
+        $this->validate($request, [
+            // ini rule atau aturannya
+            'kelas' => 'required',
+        ],
+        [
+            // ini tampilannya/pesannya
+            'kelas.required' => 'Dimohon untuk mengisi field kelas!',
+        ]);
         $attr = $request->all();
         $attr['updated_at'] = Carbon::now();
         $kelas->update($attr);
