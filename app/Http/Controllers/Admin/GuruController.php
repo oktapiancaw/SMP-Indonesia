@@ -46,7 +46,7 @@ class GuruController extends Controller
         unset($attr['_token']);
         Guru::create($attr);
 
-        return redirect('/admin/guru');
+        return redirect('/admin/guru')->with(['success' => 'Guru berhasil di tambahkan!']);
     }
 
     /**
@@ -84,7 +84,7 @@ class GuruController extends Controller
         $attr['updated_at'] = Carbon::now(); 
         $guru->update($attr);
 
-        return redirect('/admin/guru');
+        return redirect('/admin/guru')->with(['success' => 'Guru berhasil di di ubah!']);
 
     }
 
@@ -98,6 +98,6 @@ class GuruController extends Controller
     {
         Guru::destroy($guru->id);
 
-        return redirect('/admin/guru');
+        return redirect('/admin/guru')->with(['success' => 'Guru berhasil di hapus!']);
     }
 }

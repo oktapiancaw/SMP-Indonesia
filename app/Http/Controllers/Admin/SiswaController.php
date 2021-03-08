@@ -57,7 +57,7 @@ class SiswaController extends Controller
             'password' => Hash::make('1234'),
         ]);
 
-        return redirect('admin/siswa');
+        return redirect('admin/siswa')->with(['success' => 'Siswa berhasil di tambahkan!']);
     }
 
     /**
@@ -95,7 +95,7 @@ class SiswaController extends Controller
         $attr = $request->all();
         $attr['updated_at'] = Carbon::now();
         $siswa->update($attr);
-        return redirect('admin/siswa');
+        return redirect('admin/siswa')->with(['success' => 'Siswa berhasil di ubah!']);
     }
 
     /**
@@ -107,6 +107,6 @@ class SiswaController extends Controller
     public function destroy(Siswa $siswa)
     {
         Siswa::destroy($siswa->id);
-        return redirect('admin/siswa');
+        return redirect('admin/siswa')->with(['success' => 'Siswa berhasil di hapus!']);
     }
 }

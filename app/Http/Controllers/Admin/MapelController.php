@@ -50,7 +50,7 @@ class MapelController extends Controller
         $attr['updated_at'] = Carbon::now();
         Mapel::create($attr);
 
-        return redirect('/admin/mapel');
+        return redirect('/admin/mapel')->with(['success' => 'Mapel berhasil di tambahkan!']);
     }
 
     /**
@@ -85,7 +85,7 @@ class MapelController extends Controller
         $attr['updated_at'] = Carbon::now();
         $mapel->update($attr);
 
-        return redirect('admin/mapel');
+        return redirect('admin/mapel')->with(['success' => 'Mapel berhasil di ubah!']);
     }
 
     /**
@@ -98,6 +98,6 @@ class MapelController extends Controller
     {
         Mapel::destroy($mapel->kode);
 
-        return redirect('admin/mapel');
+        return redirect('admin/mapel')->with(['success' => 'Mapel berhasil di hapus!']);
     }
 }

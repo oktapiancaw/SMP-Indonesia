@@ -43,7 +43,7 @@ class KelasController extends Controller
         $attr['created_at'] = Carbon::now();
         $attr['updated_at'] = Carbon::now();
         Kelas::create($attr);
-        return redirect('admin/kelas');
+        return redirect('admin/kelas')->with(['success' => 'Kelas berhasil di tambahkan!']);
     }
 
     /**
@@ -80,7 +80,7 @@ class KelasController extends Controller
         $attr = $request->all();
         $attr['updated_at'] = Carbon::now();
         $kelas->update($attr);
-        return redirect('admin/kelas');
+        return redirect('admin/kelas')->with(['success' => 'Kelas berhasil di ubah!']);
     }
 
     /**
@@ -92,6 +92,6 @@ class KelasController extends Controller
     public function destroy(Kelas $kelas)
     {
         Kelas::destroy($kelas->id);
-        return redirect('admin/kelas');
+        return redirect('admin/kelas')->with(['success' => 'Kelas berhasil di hapus!']);
     }
 }

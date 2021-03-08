@@ -53,7 +53,7 @@ class NilaiController extends Controller
         $attr['nilai_akhir'] = ($attr['np'] + $attr['nk'])/2;
         Nilai::create($attr);
 
-        return redirect('/admin/nilai');
+        return redirect('/admin/nilai')->with(['success' => 'Nilai berhasil di tambahkan!']);
     }
 
     /**
@@ -93,7 +93,7 @@ class NilaiController extends Controller
         $attr['updated_at'] = Carbon::now();
         $nilai->update($attr);
 
-        return redirect('/admin/nilai');
+        return redirect('/admin/nilai')->with(['success' => 'Nilai berhasil di ubah!']);
     }
 
     /**
@@ -106,7 +106,7 @@ class NilaiController extends Controller
     {
         $nilai->destroy($nilai->id);
 
-        return redirect('/admin/nilai');
+        return redirect('/admin/nilai')->with(['success' => 'Nilai berhasil di hapus!']);
 
     }
 }
