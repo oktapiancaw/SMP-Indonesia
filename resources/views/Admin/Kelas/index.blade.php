@@ -25,7 +25,7 @@
               @foreach ($kelas as $item)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $item->kelas }}</td>
+                  <td>{{ $item->kelas ?? '' }}</td>
                   <td class="text-center">
                     <a href="{{ route('kelas.edit', $item->id)}}" class="btn btn-primary">Edit</a>
                     <form action="{{ route('kelas.destroy', $item->id) }}" method="post" class="d-inline-block">

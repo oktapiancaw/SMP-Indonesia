@@ -30,8 +30,8 @@
               @foreach ($nilai as $item)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $item->nama_siswa }}</td>
-                  <td>{{ $item->mapel }}</td>
+                  <td>{{ $item->nama_siswa ?? '' }}</td>
+                  <td>{{ $item->mapel ?? '' }}</td>
                   <td class="text-center">{{ $item->np }}</td>
                   <td class="text-center">{{ $item->nk }}</td>
                   <td class="text-center">{{ $item->nilai_akhir }}</td>

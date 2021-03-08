@@ -20,8 +20,8 @@ class NilaiController extends Controller
     public function index()
     {
         $nilai = DB::table('nilais')
-        ->join('mapels', 'mapels.id', '=', 'nilais.id_mapel')
-        ->join('siswas', 'siswas.id', '=', 'nilais.id_siswa')
+        ->leftjoin('mapels', 'mapels.id', '=', 'nilais.id_mapel')
+        ->leftjoin('siswas', 'siswas.id', '=', 'nilais.id_siswa')
         ->select('mapels.nama_mapel as mapel', 'siswas.nama as nama_siswa', 'nilais.*')
         ->get();
         return view('Admin.Nilai.index', ['nilai' => $nilai]);

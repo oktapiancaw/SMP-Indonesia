@@ -20,7 +20,7 @@ class MapelController extends Controller
     {
         $guru = Guru::all();
         $data_mapel = DB::table('mapels')
-        ->join('gurus','gurus.id','=', 'mapels.id_guru')
+        ->leftjoin('gurus','gurus.id','=', 'mapels.id_guru')
         ->select('mapels.*', 'gurus.nama as nama_guru')
         ->get();
         return view('Admin.Mapel.index', ['data_mapel'=> $data_mapel, 'guru' => $guru]);
@@ -116,7 +116,7 @@ class MapelController extends Controller
      */
     public function destroy(Mapel $mapel)
     {
-        Mapel::destroy($mapel->kode);
+        Mapel::destroy($mapel->id);
 
         return redirect('admin/mapel')->with(['success' => 'Mapel berhasil di hapus!']);
     }
