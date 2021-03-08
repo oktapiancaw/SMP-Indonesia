@@ -1,14 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-<div class="container">
   <div class="row">
     <div class="col text-right">
       <a href="{{ route('kelas.create') }}" class="btn btn-success">Tambah Data</a>
     </div>
   </div>
   <div class="row mt-5">
-    <div class="col">
+    <div class="col-6">
       <div class="card">
         <div class="card-header">
           <h5>Data kelas</h5>
@@ -43,7 +42,6 @@
       </div>
     </div>
   </div>
-</div>
 
 
 @endsection

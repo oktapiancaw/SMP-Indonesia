@@ -20,11 +20,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', 'HomeController@index')->name('admin.home');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/admin/home', 'HomeController@admin')->name('admin.home');
 
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],function(){
         Route::resource('guru', 'GuruController');

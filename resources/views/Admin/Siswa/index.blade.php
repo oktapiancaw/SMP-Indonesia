@@ -1,7 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-<div class="container">
   <div class="row">
     <div class="col text-right">
       <a href="{{ route('siswa.create') }}" class="btn btn-success">Tambah Data</a>
@@ -29,7 +28,7 @@
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->nama }}</td>
-                  <td>{{ $item->kelas }}</td>
+                  <td>{{ $item->kelas ?? '' }}</td>
                   <td>{{ $item->alamat }}</td>
                   <td>
                     <a href="{{ route('siswa.edit', $item->id)}}" class="btn btn-primary">Edit</a>
@@ -47,7 +46,4 @@
       </div>
     </div>
   </div>
-</div>
-
-
 @endsection

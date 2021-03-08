@@ -1,9 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-<div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-6">
       <div class="card">
         <div class="card-header">
           <h5>Tambah Data</h5>
@@ -14,12 +13,16 @@
           <div class="form-group">
             <label for="nama">Nama</label>
             <input type="text" id="nama" name="nama" class="form-control">
+
+
+            {{-- ini akan muncul ketika validation mengatakan bahwa ada error di nama/field yang dimaksud --}}
             @error('nama')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
             @enderror
           </div>
+
           <div class="form-group">
             <label for="kelas">Kelas</label>
             <select name="id_kelas" class="form-control" id="listkelas">
@@ -33,6 +36,7 @@
             </div>
             @enderror
           </div>
+
           <div class="form-group">
             <label for="alamat">alamat</label>
             <input type="text" id="alamat" name="alamat" class="form-control">
@@ -50,7 +54,6 @@
       </div>
     </div>
   </div>
-</div>
 
 
 @endsection

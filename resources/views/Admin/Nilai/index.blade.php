@@ -1,7 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-<div class="container">
   <div class="row">
     <div class="col text-right">
       <a href="{{ route('nilai.create') }}" class="btn btn-success">Tambah Data</a>
@@ -60,7 +59,6 @@
       </div>
     </div>
   </div>
-</div>
 
 
 @endsection
