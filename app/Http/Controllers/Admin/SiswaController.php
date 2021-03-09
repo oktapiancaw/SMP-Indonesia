@@ -23,6 +23,7 @@ class SiswaController extends Controller
         $siswa = DB::table('siswas')
         ->leftjoin('kelas', 'kelas.id', '=', 'siswas.id_kelas')
         ->select('kelas.kelas', 'siswas.*')
+        ->orderBy('siswas.nama')
         ->get();
         return view('Admin.Siswa.index', ['siswa' => $siswa]);
     }

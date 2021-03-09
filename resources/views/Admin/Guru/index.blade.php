@@ -13,7 +13,7 @@
           <h5>Data Guru</h5>
         </div>
         <div class="card-body">
-          <table class="table">
+          <table class="table" id="data">
             <thead>
               <tr>
                 <th scope="col">No</th>

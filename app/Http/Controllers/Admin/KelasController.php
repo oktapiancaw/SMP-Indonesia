@@ -17,7 +17,7 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::all();
+        $kelas = Kelas::orderBy('kelas', 'desc')->get();
         return view('Admin.Kelas.index', ['kelas' => $kelas]);
     }
 

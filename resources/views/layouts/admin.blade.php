@@ -18,6 +18,7 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
 
 </head>
 
@@ -134,7 +135,16 @@
 
   <!-- Page level plugins -->
   <script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script>
-
+  <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#data').DataTable({
+        paging: false
+      });
+      
+    });
+  </script>
   <!-- Page level custom scripts -->
   <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
   <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
