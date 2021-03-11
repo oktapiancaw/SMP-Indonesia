@@ -8,7 +8,7 @@
           <h5>Update Data Nilai</h5>
         </div>
         <div class="card-body">
-          <form action="{{ route('nilai.store') }}" method="post">
+          <form action="{{ route('nilai.update', $nilai->id) }}" method="post">
             @csrf
           <div class="form-group">
             <label for="siswa">Siswa</label>
@@ -55,7 +55,7 @@
             @enderror
           </div>
           <div class="form-group text-right">
-            <button type="submit" class="btn btn-success">Tambah</button>
+            <button type="submit" class="btn btn-success">Update</button>
           </div>
           </form>
         </div>
