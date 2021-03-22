@@ -36,7 +36,7 @@
           </span>
           <br>
           <span>
-            Login sebagai : {{ auth()->user()->level == 1 ? 'Guru' : 'Siswa' }}
+            Login sebagai : {{ auth()->user()->level == 1 ? 'Wali Kelas' : 'Siswa' }}
           </span>
         </p>
       </li>

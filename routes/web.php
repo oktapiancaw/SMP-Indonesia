@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     
 
-    Route::middleware(['is_guru'])->group(function () {
+    Route::middleware(['is_wali'])->group(function () {
         Route::get('/admin/home', 'HomeController@admin')->name('admin.home');
     });
 
@@ -41,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
         
         // route di bawah ini hanya boleh di akses oleh guru
         // settingnya ada di app/Http/Middleware/IsGuru
-        Route::middleware(['is_guru'])->group(function () {
+        Route::middleware(['is_wali'])->group(function () {
             Route::resource('nilai', 'NilaiController');
             Route::resource('guru', 'GuruController');
             Route::resource('kelas', 'KelasController')->parameters(['kelas' => 'kelas']);
